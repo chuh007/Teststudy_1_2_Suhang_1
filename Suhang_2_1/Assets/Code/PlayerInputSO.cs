@@ -9,7 +9,7 @@ namespace Code
     [CreateAssetMenu(fileName = "PlayerInput", menuName = "SO/PlayerInput", order = 0)]
     public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
-        [SerializeField] private LayerMask whatisTarget;
+        [SerializeField] private LayerMask whatIsTarget;
 
         public event Action<bool> OnMouseStatusChange;
 
@@ -56,7 +56,7 @@ namespace Code
         {
             Camera mainCam = Camera.main;
             Ray camRay = mainCam.ScreenPointToRay(_mousePosition);
-            bool isHit = Physics.Raycast(camRay,out hit, mainCam.farClipPlane, whatisTarget);
+            bool isHit = Physics.Raycast(camRay,out hit, mainCam.farClipPlane, whatIsTarget);
             if (isHit)
             {
                 _worldPosition = hit.point;

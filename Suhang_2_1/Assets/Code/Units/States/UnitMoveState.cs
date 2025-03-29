@@ -12,7 +12,6 @@ namespace Code.Units.States
         public override void Update()
         {
             base.Update();
-            Debug.Log(_movement.IsArrived);
             if (_movement.IsArrived)
             {
                 _unit.ChangeState("IDLE");

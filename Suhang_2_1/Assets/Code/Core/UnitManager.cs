@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Unit = Code.Units.Unit;
 
@@ -32,6 +31,10 @@ namespace Code.Core
                     // 충돌한게 있고, 충돌한 것에  Unit이라는 스크립트가 붙어있었으면
                     SelectUnit(unit);                       // 해당 유닛을 선택한다.
                 }
+                else if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out Enemy.Enemy enemy))
+                {
+                    AttackCommendUnit(enemy);
+                }
                 else if (selectedUnits.Count > 0)
                 {
                     // 충돌한게 없는데, 내가 선택하고 있던 유닛이 있다면 해당 유닛에게 명령을 내린다.
@@ -59,6 +62,14 @@ namespace Code.Core
             // 현제 선택한 유닛을 넣어주고, 선택을 활성화해준다.
             selectedUnits.Add(targetUnit);
             targetUnit.SetSelected(true);
+        }
+
+        private void AttackCommendUnit(Enemy.Enemy enemy)
+        {
+            foreach (Unit unit in selectedUnits)
+            {
+                unit.Attack(enemy);
+            }
         }
     }
 }

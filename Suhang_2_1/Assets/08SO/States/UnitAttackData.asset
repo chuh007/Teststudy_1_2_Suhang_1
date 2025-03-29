@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db73eac12974a858e1302d34d9208af, type: 3}
-  m_Name: PlayerInput
+  m_Script: {fileID: 11500000, guid: 91a14d24a80d4b9d80c6a3713e423739, type: 3}
+  m_Name: UnitAttackData
   m_EditorClassIdentifier: 
-  whatIsTarget:
-    serializedVersion: 2
-    m_Bits: 448
+  stateName: ATTACK
+  className: Code.Units.States.UnitAttackState
+  animParamName: ATTACK
+  animationHash: -1221006659

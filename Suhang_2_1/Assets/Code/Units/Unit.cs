@@ -13,12 +13,14 @@ namespace Code.Units
         
         private EntityStateMachine _stateMachine;
         private UnitMovement _movement;
+        private UniyAttackCompo _attackCompo;
 
         protected override void Awake()
         {
             base.Awake();
             _stateMachine = new EntityStateMachine(this, stateList);
             _movement = GetCompo<UnitMovement>();
+            _attackCompo = GetCompo<UniyAttackCompo>();
         }
 
         private void Start()
@@ -42,6 +44,12 @@ namespace Code.Units
             _stateMachine.ChangeState("MOVE");
         }
 
+        public void Attack(Entity target)
+        {
+            _attackCompo.Attack(target.transform);
+            _stateMachine.ChangeState("ATTACK");
+        }
+        
         public void ChangeState(string newState) => _stateMachine.ChangeState(newState);
     }
 }
