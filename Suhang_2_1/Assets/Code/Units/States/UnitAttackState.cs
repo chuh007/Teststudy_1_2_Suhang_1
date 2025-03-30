@@ -14,5 +14,11 @@ namespace Code.Units.States
             base.Enter();
             _movement.StopImmediately();
         }
+
+        public override void Update()
+        {
+            base.Update();
+            
+        }
     }
 }

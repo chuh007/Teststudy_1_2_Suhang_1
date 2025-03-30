@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Entities;
 using UnityEngine;
 using Unit = Code.Units.Unit;
 
@@ -31,9 +32,9 @@ namespace Code.Core
                     // 충돌한게 있고, 충돌한 것에  Unit이라는 스크립트가 붙어있었으면
                     SelectUnit(unit);                       // 해당 유닛을 선택한다.
                 }
-                else if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out Enemy.Enemy enemy))
+                else if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                 {
-                    AttackCommendUnit(enemy);
+                    AttackCommendUnit(hitInfo.transform);
                 }
                 else if (selectedUnits.Count > 0)
                 {
@@ -64,7 +65,7 @@ namespace Code.Core
             targetUnit.SetSelected(true);
         }
 
-        private void AttackCommendUnit(Enemy.Enemy enemy)
+        private void AttackCommendUnit(Transform enemy)
         {
             foreach (Unit unit in selectedUnits)
             {

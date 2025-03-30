@@ -44,9 +44,9 @@ namespace Code.Units
             _stateMachine.ChangeState("MOVE");
         }
 
-        public void Attack(Entity target)
+        public void Attack(Transform target)
         {
-            _attackCompo.Attack(target.transform);
+            _attackCompo.Attack(target);
             _stateMachine.ChangeState("ATTACK");
         }
         
