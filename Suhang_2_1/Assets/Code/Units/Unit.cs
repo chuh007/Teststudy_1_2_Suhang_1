@@ -46,7 +46,7 @@ namespace Code.Units
 
         public void Attack(Transform target)
         {
-            _attackCompo.Attack(target);
+            _attackCompo.SetTarget(target);
             _stateMachine.ChangeState("ATTACK");
         }
         

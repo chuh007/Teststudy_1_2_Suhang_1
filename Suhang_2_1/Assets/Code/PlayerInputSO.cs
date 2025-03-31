@@ -14,6 +14,8 @@ namespace Code
         public event Action<bool> OnMouseStatusChange;
 
         public Vector2 MovementKey {get; private set;}
+        public Vector2 MousePosition => _mousePosition;
+        
         
         private Controls _control;
         private Vector2 _mousePosition;
